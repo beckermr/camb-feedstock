@@ -21,7 +21,7 @@ source:
       sha256: 22886f6c217c55cadeba30a81159f1e33bc3927f25534f54a6e31c88b2366c03
 
 build:
-  number: 0
+  number: 1
   skip: match(python, "<3.11")
   script:
     - if: win
@@ -62,7 +62,7 @@ requirements:
     - sympy >=1.0
     - scipy >=1.0
     - if: not win
-      then: ${{ compiler('fortran') }}
+      then: fortran-compiler
 
 tests:
   - python:
