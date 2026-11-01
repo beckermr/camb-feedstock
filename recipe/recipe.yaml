@@ -20,7 +20,7 @@ source:
         - 0000-no-static-builds.patch
 
 build:
-  number: 3
+  number: 4
   skip: match(python, "<3.10")
   script:
     - if: win
@@ -51,6 +51,10 @@ requirements:
     - pip
     - setuptools
     - packaging
+    - if: linux
+      then: libgomp
+    - if: osx
+      then: llvm-openmp
   run:
     - python
     - numpy
@@ -59,7 +63,7 @@ requirements:
     - sympy >=1.0
     - scipy >=1.0
     - if: not win
-      then: ${{ compiler('fortran') }}
+      then: fortran-compiler
 
 tests:
   - python:
